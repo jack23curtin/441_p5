@@ -20,6 +20,26 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func addArt(_ sender: Any) {
+        let node = SCNNode()
+        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        node.position = SCNVector3(0,0,0)
+        self.sceneView.scene.rootNode.addChildNode(node)
+    }
+    
+    @IBAction func shiftArt(_ sender: Any) {
+        self.restartSession()
+        
+    }
+    func restartSession(){
+        self.sceneView.session.pause()
+        self.sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
+        self.sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 
+        
+    }
 }
 
