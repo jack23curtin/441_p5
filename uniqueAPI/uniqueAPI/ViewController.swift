@@ -22,9 +22,9 @@ class ViewController: UIViewController {
 
     @IBAction func addArt(_ sender: Any) {
         let node = SCNNode()
-        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        node.geometry = SCNBox(width: 0.6, height: 0.9, length: 0.05, chamferRadius: 0)
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
-        node.position = SCNVector3(0,0,0)
+        node.position = SCNVector3(0,0,-1)
         self.sceneView.scene.rootNode.addChildNode(node)
     }
     
